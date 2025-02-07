@@ -15,10 +15,18 @@ function Home() {
   return (
     <>
       <Header />
-      <Hero />
-      <About />
-      <ProjectSection />
-      <Contact />
+      <React.Suspense fallback={<Loader />}>
+        <Hero />
+      </React.Suspense>
+      <React.Suspense fallback={<Loader />}>
+        <About />
+      </React.Suspense>
+      <React.Suspense fallback={<Loader />}>
+        <ProjectSection />
+      </React.Suspense>
+      <React.Suspense fallback={<Loader />}>
+        <Contact />
+      </React.Suspense>
     </>
   );
 }
