@@ -33,25 +33,27 @@ const PortfolioSection = () => {
         </motion.div>
 
         {/* Custom Tabs */}
-        <div className="flex justify-center gap-6 mb-12 flex-wrap">
+        <div className="flex justify-center gap-14 sm:gap-36 mb-12 flex-wrap">
           <button
             onClick={() => setActiveTab("projects")}
-            className={`px-12 py-4 text-lg font-semibold rounded-lg transition-all duration-300 ${
+            className={`px-12 py-4 text-lg font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 ${
               activeTab === "projects"
-                ? "bg-purple-600 text-white"
-                : "bg-transparent text-purple-400 border border-purple-600 hover:bg-purple-700 hover:text-white"
+                ? "bg-blue-600 text-white cursor-pointer"
+                : "bg-transparent text-gray-200 border border-blue-900 hover:bg-blue-700 hover:text-white"
             }`}
           >
+            <Icons.Briefcase className="w-6 h-6" />
             Projects
           </button>
           <button
             onClick={() => setActiveTab("skills")}
-            className={`px-12 py-4 text-lg font-semibold rounded-lg transition-all duration-300 ${
+            className={`px-12 py-4 text-lg font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 ${
               activeTab === "skills"
-                ? "bg-purple-600 text-white"
-                : "bg-transparent text-purple-400 border border-purple-600 hover:bg-purple-700 hover:text-white"
+                ? "bg-blue-900 text-white"
+                : "bg-transparent text-blue-400 border border-blue-600 hover:bg-blue-700 hover:text-white"
             }`}
           >
+            <Icons.Code className="w-6 h-6" />
             Skills
           </button>
         </div>
@@ -108,7 +110,7 @@ const PortfolioSection = () => {
           </motion.div>
         ) : (
           <motion.div
-            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-8 sm:grid-cols-3 lg:grid-cols-5"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -116,14 +118,14 @@ const PortfolioSection = () => {
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                className="p-4 bg-purple-900/10 backdrop-blur-md rounded-lg border border-purple-600/30 hover:bg-purple-900/20 transition-all flex items-center gap-4"
+                className="p-4 bg-blue-900/10 backdrop-blur-md rounded-lg border border-blue-600/30 hover:bg-blue-900/20 transition-all flex items-center gap-4"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <LucideIcon name={skill.icon} />
-                <h3 className="text-lg font-bold text-purple-400">
+                <h3 className="text-lg font-bold text-blue-400">
                   {skill.name}
                 </h3>
               </motion.div>

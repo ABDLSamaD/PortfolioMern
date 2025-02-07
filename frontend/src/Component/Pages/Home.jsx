@@ -28,7 +28,7 @@ export default function Home() {
 
             <div className="flex flex-wrap gap-4 animate-[fadeInUp_1s_ease-out_0.7s_forwards] opacity-0">
               <a
-                href="#projects"
+                href="#project"
                 className="group flex items-center gap-2 rounded-full bg-purple-500 px-6 py-3 text-white transition-all duration-300 hover:bg-purple-600"
               >
                 <Terminal className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1" />

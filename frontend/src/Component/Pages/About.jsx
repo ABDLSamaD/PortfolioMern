@@ -103,7 +103,7 @@ const About = () => {
                   Download CV
                 </a>
                 <a
-                  href="#"
+                  href="#project"
                   className="inline-flex items-center px-6 py-2 rounded-lg border border-purple-600 text-purple-400 hover:bg-purple-600/10"
                 >
                   View Projects
