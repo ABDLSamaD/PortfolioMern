@@ -1,163 +1,153 @@
-import React from "react";
+"use client";
 import { useNavigate, useParams } from "react-router-dom";
 import projects from "../ProjectshowCase/Project";
 import { motion } from "framer-motion";
-import { Github, ExternalLink, ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { FaReact, FaNodeJs, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { SiMongodb, SiExpress } from "react-icons/si";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
+const techIcons = {
+  React: <FaReact className="w-5 h-5 text-blue-500" />,
+  "Node.js": <FaNodeJs className="w-5 h-5 text-green-500" />,
+  MongoDB: <SiMongodb className="w-5 h-5 text-green-600" />,
+  Express: <SiExpress className="w-5 h-5 text-gray-500" />,
 };
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const project = projects.find((project) => project.id === parseInt(id));
+  const project = projects.find(
+    (project) => project.id === Number.parseInt(id)
+  );
 
   if (!project) {
     return (
-      <div className="flex items-center justify-center min-h-screen text-white text-xl">
+      <div className="flex items-center justify-center min-h-screen bg-[#0a0a0f] text-white text-xl">
         Project not found
       </div>
     );
   }
 
   return (
-    <section className="relative min-h-screen p-4 md:p-8 pt-24 pb-16">
-      <div className="max-w-7xl mx-auto">
-        {/* Back Button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="flex justify-between items-center mb-12"
-        >
+    <div className="min-h-screen text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 py-4">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-all cursor-pointer"
+            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
-            Home / Projects
+            Home / ProjectDetails
           </button>
-        </motion.div>
+        </div>
+      </nav>
 
+      {/* Main Content */}
+      <main className="pt-24 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <h1 className="text-5xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+          {/* Project Title */}
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
             {project.title}
           </h1>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            {project.description}
-          </p>
-        </motion.div>
 
-        <motion.div
-          className="grid gap-12 lg:grid-cols-2"
-          initial="hidden"
-          animate="show"
-          variants={{
-            show: {
-              transition: {
-                staggerChildren: 0.3,
-              },
-            },
-          }}
-        >
-          {/* Project Image with Animation */}
-          <motion.div
-            className="relative group rounded-2xl overflow-hidden shadow-2xl ring-1 ring-purple-500/20"
-            variants={fadeInUp}
-          >
+          {/* Project Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-8 mt-8">
+            {/* Left Column - Description & Tech Stack */}
             <motion.div
-              className="relative aspect-video"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                <span className="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  View Project
-                </span>
+              {/* Description */}
+              <div className="text-gray-300 text-lg leading-relaxed">
+                {project.description}
+              </div>
+              <div className="text-gray-300 text-lg leading-relaxed">
+                {project.details}
+              </div>
+
+              {/* Live Demo & GitHub Links */}
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md transition-colors"
+                >
+                  <FaExternalLinkAlt className="w-5 h-5" />
+                  Live Demo
+                </a>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors"
+                >
+                  <FaGithub className="w-5 h-5" />
+                  GitHub
+                </a>
+              </div>
+
+              {/* Technologies Used */}
+              <div>
+                <h3 className="text-white text-xl font-semibold mb-4">
+                  Technologies Used
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {project.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 text-gray-300 rounded-md text-sm"
+                    >
+                      {techIcons[tech] || null}
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
-          </motion.div>
 
-          {/* Project Details Section */}
-          <motion.div
-            className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg shadow-xl ring-1 ring-purple-500/20"
-            variants={fadeInUp}
-          >
-            <h2 className="text-2xl font-bold text-purple-400 mb-6">
-              Project Overview
-            </h2>
-            <p className="text-gray-300 mb-8 leading-relaxed">
-              {project.details}
-            </p>
+            {/* Right Column - Preview & Features */}
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              {/* Project Preview */}
+              <div className="rounded-lg overflow-hidden shadow-2xl">
+                <img
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  className="w-full h-auto"
+                />
+              </div>
 
-            {/* Technologies Used */}
-            <h3 className="text-xl font-bold text-purple-400 mb-4">
-              Technologies Used
-            </h3>
-            <div className="flex flex-wrap gap-2 mb-8">
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 bg-purple-500/20 text-purple-300 text-sm rounded-full ring-1 ring-purple-500/30 hover:bg-purple-500/30 transition-colors duration-200"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {/* Features */}
-            <h3 className="text-xl font-bold text-purple-400 mb-4">
-              Key Features
-            </h3>
-            <ul className="space-y-3 text-gray-300 mb-8">
-              {project.features.map((feature, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="mr-2 mt-1.5">•</span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Links */}
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-purple-500/20 text-purple-300 rounded-full hover:bg-purple-500/30 transition-all duration-200 ring-1 ring-purple-500/30"
-              >
-                <Github className="w-5 h-5" />
-                View on GitHub
-              </a>
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-purple-500/20 text-purple-300 rounded-full hover:bg-purple-500/30 transition-all duration-200 ring-1 ring-purple-500/30"
-              >
-                <ExternalLink className="w-5 h-5" />
-                Live Demo
-              </a>
-            </div>
-
-            <div className="text-gray-400 text-sm">
-              <strong className="text-purple-400">Created:</strong>{" "}
-              {project.createdDate}
-            </div>
-          </motion.div>
+              {/* Key Features */}
+              <div className="bg-gray-800/30 rounded-lg p-6 backdrop-blur-md">
+                <h3 className="text-white text-xl font-semibold mb-4">
+                  Key Features
+                </h3>
+                <ul className="space-y-3">
+                  {project.features.map((feature, index) => (
+                    <li key={index} className="flex items-start text-gray-300">
+                      <span className="mr-2">•</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
-      </div>
-    </section>
+      </main>
+    </div>
   );
 };
 

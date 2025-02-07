@@ -42,7 +42,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="min-h-screen p-4 md:p-8 pt-24">
+    <section className="min-h-screen p-4 md:p-8 pt-24" id="contact">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -172,7 +172,7 @@ const Contact = () => {
                 </p>
               </div>
               <button
-                type="submit"
+                type="button"
                 className="w-full py-3 px-6 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-medium transition-all duration-200"
               >
                 Post Comment

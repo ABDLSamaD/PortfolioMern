@@ -1,8 +1,11 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Background } from "./Background";
+import { Background } from "./Features/Background";
+import Loader from "./Features/Loader";
 import Header from "./Pages/Header";
-import ProjectDetail from "./ProjectshowCase/ProjectDetail";
+const ProjectDetail = React.lazy(() =>
+  import("./ProjectshowCase/ProjectDetail")
+);
 const Hero = React.lazy(() => import("./Pages/Home"));
 const About = React.lazy(() => import("./Pages/About"));
 const Contact = React.lazy(() => import("./Pages/Contact"));
@@ -21,12 +24,9 @@ function Home() {
 }
 
 function App() {
-  const location = useLocation();
-  const isProjectDetailPage = location.pathname.startsWith("/project/");
-
   return (
     <>
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <React.Suspense fallback={<Loader />}>
         <Background>
           <Routes>
             <Route path="/" element={<Home />} />

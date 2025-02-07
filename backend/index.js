@@ -41,6 +41,21 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
+app.post("/api/post", async (req, res) => {
+  try {
+    const { email, description, image } = req.body;
+    if (!title || !description || !image) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+    const newPost = new Post({ title, description, image });
+    await newPost.save();
+    await sendMail(email, description);
+    res.status(200).json({ message: "Post created successfully!" });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
     return res.status(400).json({ message: "Invalid JSON payload" });
