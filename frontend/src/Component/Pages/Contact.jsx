@@ -9,13 +9,14 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const portfolioURL = import.meta.env.VITE_BACKEND_URL_API;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     const { name, email, message } = formData;
     try {
-      const response = await fetch("http://localhost:5120/contact", {
+      const response = await fetch(`${portfolioURL}/contact`, {
         body: JSON.stringify({ name, email, message }),
         method: "POST",
         headers: {
@@ -99,9 +100,10 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full py-3 px-6 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2"
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>

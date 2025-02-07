@@ -25,7 +25,7 @@ mongoose
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
 // POST route to handle form submission
-app.post("contact", async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
     if (!name || !email || !message) {
@@ -44,6 +44,9 @@ app.use((err, req, res, next) => {
     return res.status(400).json({ message: "Invalid JSON payload" });
   }
   next(err);
+});
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 // Default catch-all route for Vercel
 app.all("*", (req, res) => {
