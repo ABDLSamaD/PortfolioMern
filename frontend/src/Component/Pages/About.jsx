@@ -1,4 +1,4 @@
-import { Download, FolderGit2, Globe } from "lucide-react";
+import { Download, FolderGit2, Globe, User, Code } from "lucide-react";
 import { motion } from "framer-motion";
 import yourImage from "../../assets/portfolio.jpg"; // Import your image from the assets folder
 
@@ -24,7 +24,10 @@ const fadeIn = {
 
 const About = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden" id="about">
+    <section
+      className="relative min-h-screen overflow-hidden bg-gray-900/10"
+      id="about"
+    >
       {/* Animated background shapes */}
       <div className="mx-auto max-w-7xl sm:max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="fixed inset-0 -z-10">
@@ -58,10 +61,9 @@ const About = () => {
           <motion.div
             className="mb-8 text-center"
             initial="hidden"
-            whileInView="show"
+            animate="show"
             variants={fadeInUp}
             transition={{ duration: 0.5 }}
-            viewport={{ once: false }} // Reanimate when scrolled into view again
           >
             <h1 className="text-4xl font-bold text-purple-300">About Me</h1>
             <p className="mt-2 text-gray-400">
@@ -72,15 +74,17 @@ const About = () => {
           <motion.div
             className="grid gap-16 md:grid-cols-2"
             initial="hidden"
-            whileInView="show"
+            animate="show"
             variants={staggerContainer}
-            viewport={{ once: false }}
           >
             <motion.div className="space-y-6" variants={fadeInUp}>
               <div>
-                <h2 className="mb-4 text-3xl font-bold text-white">
+                <h2 className="mb-4 text-3xl font-bold text-white flex items-center">
+                  <User className="mr-2 h-8 w-8 text-purple-400" />
                   Hello, I&apos;m
-                  <span className="block text-purple-400">Abdul Samad</span>
+                  <span className="block text-purple-400 ml-2">
+                    Abdul Samad
+                  </span>
                 </h2>
                 <p className="text-lg leading-relaxed text-gray-300">
                   A passionate developer focused on creating innovative web
@@ -108,7 +112,7 @@ const About = () => {
             </motion.div>
 
             <motion.div
-              className="relative w-72"
+              className="relative w-72 mx-auto"
               variants={fadeIn}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
@@ -122,6 +126,7 @@ const About = () => {
                     src={yourImage} // Use the imported image
                     alt="Abdul Samad"
                     className="rounded-full object-cover w-full h-full"
+                    loading="lazy" // Lazy loading for the image
                   />
                 </div>
               </motion.div>
@@ -131,9 +136,8 @@ const About = () => {
           <motion.div
             className="mt-16 grid gap-4 sm:grid-cols-2"
             initial="hidden"
-            whileInView="show"
+            animate="show"
             variants={staggerContainer}
-            viewport={{ once: false }}
           >
             <motion.div
               className="group relative overflow-hidden bg-purple-950/20 p-6 backdrop-blur-md transition-all hover:bg-purple-900/20"

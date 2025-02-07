@@ -61,7 +61,7 @@ export default function Header() {
           }`}
         >
           <nav className="space-y-2 px-2 pb-6 pt-2">
-            {["Home", "Projects", "About", "Contact"].map((item) => (
+            {["Home", "About", "Project", "Contact"].map((item) => (
               <a
                 key={item}
                 href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
