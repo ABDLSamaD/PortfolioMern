@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const Message = require("./model");
+const sendMail = require("./sendMail");
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.post("/api/contact", async (req, res) => {
     }
     const newMessage = new Message({ name, email, message });
     await newMessage.save();
+    sendMail(name, email, message);
     res.status(200).json({ message: "Form submitted successfully!" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
