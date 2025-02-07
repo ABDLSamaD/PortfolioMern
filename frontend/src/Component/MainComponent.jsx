@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Background } from "./Features/Background";
 import Loader from "./Features/Loader";
 import Header from "./Pages/Header";
