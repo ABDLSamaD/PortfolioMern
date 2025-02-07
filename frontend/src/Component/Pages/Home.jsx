@@ -1,6 +1,6 @@
 import React from "react";
+import Developer from "../../assets/developer.jpg";
 import { Github, Linkedin, Mail, Code, Terminal, Database } from "lucide-react";
-import About from "./About";
 
 export default function Home() {
   return (
@@ -64,24 +64,25 @@ export default function Home() {
           {/* Right Content - Animated Illustration */}
           <div className="relative animate-[scaleIn_1s_ease-out_1s_forwards] opacity-0">
             <div className="relative">
-              <div className="animate-[float_6s_ease-in-out_infinite]">
+              <div className="animate-float md:animate-[float_6s_ease-in-out_infinite]">
                 <img
-                  src="https://static.vecteezy.com/system/resources/previews/016/746/979/non_2x/freelancer-software-developer-programmer-coder-illustrator-vector.jpg"
+                  src={Developer}
                   alt="Developer Illustration"
                   className="w-72 rounded-lg shadow-xl"
+                  loading="lazy"
                 />
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -left-8 top-1/4 animate-[float_7s_ease-in-out_infinite] rounded-lg bg-purple-400/10 p-4 backdrop-blur-sm">
+              <div className="absolute -left-8 top-1/4 animate-float md:animate-[float_7s_ease-in-out_infinite] rounded-lg bg-purple-400/10 p-4 backdrop-blur-sm">
                 <Database className="h-8 w-8 text-purple-400" />
               </div>
 
-              <div className="absolute -right-8 top-1/2 animate-[float_8s_ease-in-out_infinite] rounded-lg bg-purple-600/10 p-4 backdrop-blur-sm">
+              <div className="absolute -right-8 top-1/2 animate-float md:animate-[float_8s_ease-in-out_infinite] rounded-lg bg-purple-600/10 p-4 backdrop-blur-sm">
                 <Code className="h-8 w-8 text-purple-600" />
               </div>
 
-              <div className="absolute bottom-8 left-1/2 animate-[float_6s_ease-in-out_infinite] -translate-x-1/2 rounded-lg bg-purple-500/10 p-4 backdrop-blur-sm">
+              <div className="absolute bottom-8 left-1/2 animate-float md:animate-[float_6s_ease-in-out_infinite] -translate-x-1/2 rounded-lg bg-purple-500/10 p-4 backdrop-blur-sm">
                 <Terminal className="h-8 w-8 text-purple-500" />
               </div>
             </div>

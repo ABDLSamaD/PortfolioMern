@@ -10,10 +10,7 @@
 }
 
 body {
-  background: radial-gradient(circle, rgba(10, 25, 47, 0.9), rgba(0, 0, 0, 1));
-  /* min-height: 100vh;
-  overflow: hidden; */
-  position: relative;
+  scroll-behavior: smooth;
 }
 
 @keyframes fadeIn {
@@ -96,6 +93,18 @@ body {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+@media (max-width: 768px) {
+  .animate-float {
+    animation: none !important;
+  }
+  .animate-float-slow {
+    animation: none !important;
+  }
+
+  .animate-float-delayed {
+    animation: none !important;
+  }
 }
 
 .animate-float-slow {
