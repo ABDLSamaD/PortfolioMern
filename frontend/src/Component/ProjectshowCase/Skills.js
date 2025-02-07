@@ -1,0 +1,23 @@
+const skills = [
+  { name: "React.js", icon: "React", category: "frontend" },
+  { name: "JavaScript", icon: "FileJson", category: "frontend" },
+  { name: "TypeScript", icon: "FileType", category: "frontend" },
+  { name: "HTML5", icon: "Html", category: "frontend" },
+  { name: "CSS3", icon: "Css3", category: "frontend" },
+  { name: "Redux", icon: "Box", category: "frontend" },
+  { name: "Tailwind CSS", icon: "Wind", category: "frontend" },
+  { name: "Node.js", icon: "Server", category: "backend" },
+  { name: "Express.js", icon: "ServerCog", category: "backend" },
+  { name: "RESTful APIs", icon: "Network", category: "backend" },
+  { name: "GraphQL", icon: "GitGraph", category: "backend" },
+  { name: "MongoDB", icon: "Database", category: "database" },
+  { name: "Mongoose", icon: "Database", category: "database" },
+  { name: "Git", icon: "Git", category: "tools" },
+  { name: "Docker", icon: "Container", category: "tools" },
+  { name: "AWS", icon: "Cloud", category: "tools" },
+  { name: "Problem Solving", icon: "Puzzle", category: "soft" },
+  { name: "Team Work", icon: "Users", category: "soft" },
+  { name: "Communication", icon: "MessageSquare", category: "soft" },
+  { name: "Time Management", icon: "Clock", category: "soft" },
+];
+export default skills;

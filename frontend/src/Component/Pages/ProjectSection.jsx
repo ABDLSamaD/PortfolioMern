@@ -1,0 +1,115 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import projects from "../ProjectshowCase/Project";
+import skills from "../ProjectshowCase/Skills";
+import * as Icons from "lucide-react";
+
+const PortfolioSection = () => {
+  const [activeTab, setActiveTab] = useState("projects");
+
+  const LucideIcon = ({ name }) => {
+    const IconComponent = Icons[name];
+    return IconComponent ? (
+      <IconComponent className="w-8 h-8 text-purple-400" />
+    ) : null;
+  };
+
+  return (
+    <div className="min-h-screen p-4 md:p-8" id="project">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl font-bold text-white mb-4">
+            Portfolio Showcase
+          </h1>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Explore my journey through projects and technical expertise. Each
+            section represents a milestone in my continuous learning path.
+          </p>
+        </motion.div>
+
+        {/* Custom Tabs */}
+        <div className="flex justify-center gap-6 mb-12 flex-wrap">
+          <button
+            onClick={() => setActiveTab("projects")}
+            className={`px-12 py-4 text-lg font-semibold rounded-lg transition-all duration-300 ${
+              activeTab === "projects"
+                ? "bg-purple-600 text-white"
+                : "bg-transparent text-purple-400 border border-purple-600 hover:bg-purple-700 hover:text-white"
+            }`}
+          >
+            Projects
+          </button>
+          <button
+            onClick={() => setActiveTab("skills")}
+            className={`px-12 py-4 text-lg font-semibold rounded-lg transition-all duration-300 ${
+              activeTab === "skills"
+                ? "bg-purple-600 text-white"
+                : "bg-transparent text-purple-400 border border-purple-600 hover:bg-purple-700 hover:text-white"
+            }`}
+          >
+            Skills
+          </button>
+        </div>
+
+        {/* Content based on active tab */}
+        {activeTab === "projects" ? (
+          <motion.div
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                className="p-6 bg-purple-900/10 backdrop-blur-md rounded-lg border border-purple-600/30 hover:bg-purple-900/20 transition-all"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Link to={`/project/${project.id}`}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-xl font-bold text-purple-400">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-gray-300">{project.description}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={index}
+                className="p-4 bg-purple-900/10 backdrop-blur-md rounded-lg border border-purple-600/30 hover:bg-purple-900/20 transition-all flex items-center gap-4"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <LucideIcon name={skill.icon} />
+                <h3 className="text-lg font-bold text-purple-400">
+                  {skill.name}
+                </h3>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+};
+export default PortfolioSection;
