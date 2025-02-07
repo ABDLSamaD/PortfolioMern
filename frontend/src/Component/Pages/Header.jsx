@@ -64,7 +64,7 @@ export default function Header() {
             {["Home", "Projects", "About", "Contact"].map((item) => (
               <a
                 key={item}
-                href="#"
+                href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
                 className="group block rounded-lg px-4 py-3 text-base font-medium text-gray-300 transition-all duration-300 hover:bg-white/10 hover:text-white"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -80,15 +80,28 @@ export default function Header() {
             {/* Social Icons in Mobile Menu */}
             <div className="mt-6 flex justify-center space-x-6 px-4">
               {[
-                { Icon: Github, label: "GitHub" },
-                { Icon: Twitter, label: "Twitter" },
-                { Icon: Linkedin, label: "LinkedIn" },
-                { Icon: Mail, label: "Email" },
-              ].map(({ Icon, label }) => (
+                {
+                  Icon: Github,
+                  label: "GitHub",
+                  link: "https://github.com/ABDLSamaD",
+                },
+                { Icon: Twitter, label: "Twitter", link: "#" },
+                {
+                  Icon: Linkedin,
+                  label: "LinkedIn",
+                  link: "https://www.linkedin.com/in/abdul-samad-421793309",
+                },
+                {
+                  Icon: Mail,
+                  label: "Email",
+                  link: "https://mail.google.com/mail/u/0/",
+                },
+              ].map(({ Icon, label, link }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={link}
                   aria-label={label}
+                  target="_blank"
                   className="group rounded-full bg-white/10 p-3 transition-all duration-300 hover:bg-white/20"
                 >
                   <Icon className="h-5 w-5 text-gray-300 transition-all duration-300 group-hover:scale-110 group-hover:text-white" />

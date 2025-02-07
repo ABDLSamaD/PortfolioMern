@@ -51,7 +51,7 @@ const ProjectDetail = () => {
           transition={{ duration: 0.5 }}
         >
           {/* Project Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
             {project.title}
           </h1>
 
