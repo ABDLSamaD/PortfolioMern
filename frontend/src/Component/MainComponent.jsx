@@ -35,12 +35,10 @@ function App() {
   return (
     <>
       <React.Suspense fallback={<Loader />}>
-        <Background>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/project/:id" element={<ProjectDetail />} />
-          </Routes>
-        </Background>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+        </Routes>
       </React.Suspense>
     </>
   );
