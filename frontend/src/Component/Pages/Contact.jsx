@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageSquare, Upload } from "lucide-react";
+import { ArrowLeft, MessageSquare, Upload } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,6 +46,20 @@ const Contact = () => {
 
   return (
     <section className="min-h-screen p-4 md:p-8 pt-24" id="contact">
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <button
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 text-gray-300 cursor-pointer"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="hover:text-gray-50">Home</span> /
+            {location.pathname === "/contact" && (
+              <span className="text-blue-400">Contact</span>
+            )}
+          </button>
+        </div>
+      </nav>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

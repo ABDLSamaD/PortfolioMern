@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X, Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
             <ul className="flex space-x-12">
-              {["Home", "About", "Project", "Contact"].map((item) => (
+              {["Home", "About", "Project"].map((item) => (
                 <li key={item} className="relative">
                   <a
                     href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
@@ -37,6 +38,14 @@ export default function Header() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-gray-300 transition-colors duration-300 hover:text-white"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -61,7 +70,7 @@ export default function Header() {
           }`}
         >
           <nav className="space-y-2 px-2 pb-6 pt-2">
-            {["Home", "About", "Project", "Contact"].map((item) => (
+            {["Home", "About", "Project"].map((item) => (
               <a
                 key={item}
                 href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
@@ -76,6 +85,12 @@ export default function Header() {
                 </div>
               </a>
             ))}
+            <Link
+              to="/contact"
+              className="group block rounded-lg px-4 py-3 text-base font-medium text-gray-300 transition-all duration-300 hover:bg-white/10 hover:text-white"
+            >
+              Contact
+            </Link>
 
             {/* Social Icons in Mobile Menu */}
             <div className="mt-6 flex justify-center space-x-6 px-4">

@@ -1,8 +1,9 @@
 "use client";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import projects from "../ProjectshowCase/Project";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Star } from "lucide-react";
 import { FaReact, FaNodeJs, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { SiMongodb, SiExpress } from "react-icons/si";
 
@@ -19,6 +20,9 @@ const ProjectDetail = () => {
   const project = projects.find(
     (project) => project.id === Number.parseInt(id)
   );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!project) {
     return (
@@ -35,10 +39,11 @@ const ProjectDetail = () => {
         <div className="max-w-7xl mx-auto px-4 py-4">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors cursor-pointer"
+            className="flex items-center gap-2 text-gray-300 cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
-            Home / ProjectDetails
+            <span className="hover:text-gray-50">Home</span> /
+            <span className="text-blue-400">ProjectDetails</span>
           </button>
         </div>
       </nav>
@@ -125,15 +130,18 @@ const ProjectDetail = () => {
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-auto"
+                  className="w-full h-auto hover:scale-105 transition-all duration-300"
                 />
               </div>
 
               {/* Key Features */}
-              <div className="bg-gray-800/30 rounded-lg p-6 backdrop-blur-md">
-                <h3 className="text-white text-xl font-semibold mb-4">
-                  Key Features
-                </h3>
+              <div className="bg-gray-900/20 rounded-lg p-6 shadow backdrop-blur-md">
+                <div className="flex items-center gap-2 mb-5">
+                  <Star className="w-5 h-5 text-yellow-500" />
+                  <h3 className="text-white text-xl font-semibold">
+                    Key Features
+                  </h3>
+                </div>
                 <ul className="space-y-3">
                   {project.features.map((feature, index) => (
                     <li key={index} className="flex items-start text-gray-300">
