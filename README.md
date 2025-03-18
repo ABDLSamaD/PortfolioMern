@@ -58,11 +58,11 @@ This portfolio is deployed on **Vercel** for lightning-fast performance and scal
 
 If you have any queries, feel free to connect with me:
 
-📧 **Email:** [your-email@example.com](mailto:your-email@example.com)
+📧 **Email:** [mail@gmail.com](mailto:samadpakhtoon09@gmail.com)
 
 🔗 **Portfolio:** [ABDLSamaD](https://portfolio-mern-sage.vercel.app/)
 
-💼 **LinkedIn:** [Your LinkedIn](#)
+💼 **LinkedIn:** [Your LinkedIn](https://www.linkedin.com/in/abdul-samad-421793309/)
 
 ---
 
