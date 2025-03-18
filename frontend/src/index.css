@@ -16,9 +16,11 @@ body {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -35,12 +37,22 @@ body {
 
 @keyframes slideIn {
   from {
-    transform: translateX(-100px);
+    transform: translateX(-50px);
     opacity: 0;
   }
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -56,14 +68,11 @@ body {
 }
 
 @keyframes float {
-  0% {
+  0%, 100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
   }
 }
 
@@ -91,26 +100,118 @@ body {
   }
 }
 
+/* about */
+@keyframes gradientMove1 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(100px, 50px);
+  }
+}
+
+@keyframes gradientMove2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-100px, -50px);
+  }
+}
+.animate-gradient1 {
+  animation: gradientMove1 20s linear infinite;
+}
+
+.animate-gradient2 {
+  animation: gradientMove2 20s linear infinite;
+}
+
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
-@media (max-width: 768px) {
-  .animate-float {
-    animation: none !important;
-  }
-  .animate-float-slow {
-    animation: none !important;
-  }
-
-  .animate-float-delayed {
-    animation: none !important;
-  }
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
+.animate-slide-in {
+  animation: slideIn 0.8s ease-out forwards;
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600;
+}
 .animate-float-slow {
   animation: float-slow 8s ease-in-out infinite;
 }
 
 .animate-float-delayed {
   animation: float-delayed 7s ease-in-out infinite;
+}
+
+
+/* project */
+.stagger-animation > * {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.grid-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.grid-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.grid-item-visible {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.tab-content {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+
+
+/* Ensure animations play smoothly */
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve scrolling performance */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improve animation performance */
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }

@@ -9,8 +9,8 @@ const ProjectDetail = React.lazy(() =>
 );
 const Hero = React.lazy(() => import("./Pages/Home"));
 const About = React.lazy(() => import("./Pages/About"));
-const Contact = React.lazy(() => import("./Pages/Contact"));
 const ProjectSection = React.lazy(() => import("./Pages/ProjectSection"));
+const Contact = React.lazy(() => import("./Pages/Contact"));
 
 function Home() {
   useEffect(() => {
@@ -25,6 +25,7 @@ function Home() {
         <Hero />
         <About />
         <ProjectSection />
+        <Contact />
       </React.Suspense>
     </>
   );
@@ -42,7 +43,6 @@ function App() {
             </React.Suspense>
           }
         />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
       </Routes>
     </Background>
