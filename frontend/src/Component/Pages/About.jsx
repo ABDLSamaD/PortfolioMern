@@ -1,7 +1,16 @@
 import { Download, FolderGit2, Globe, User } from "lucide-react";
 import yourImage from "../../assets/portfolio.jpg";
+import MERNPORTFOLIO from "../../assets/resume_mern.pdf";
 
 const About = () => {
+  const downloadResume = () => {
+    const link = document.createElement("a");
+    link.href = MERNPORTFOLIO;
+    link.download = "Abdul-Samad-Resume.pdf"; // Custom file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <section
       className="relative min-h-screen overflow-hidden top-10"
@@ -35,13 +44,13 @@ const About = () => {
               </div>
 
               <div className="flex gap-4 sm:flex-row flex-col">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300"
+                <button
+                  onClick={downloadResume}
+                  className="inline-flex items-center px-6 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors duration-300 cursor-pointer"
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Download CV
-                </a>
+                </button>
                 <a
                   href="#project"
                   className="inline-flex items-center px-6 py-2 rounded-lg border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-colors duration-300"
