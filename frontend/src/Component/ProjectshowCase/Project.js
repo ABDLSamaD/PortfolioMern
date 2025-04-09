@@ -25,7 +25,7 @@ const projects = [
     details:
       "Electrica is a platform that helps you find the best electrician in your area and book an appointment. It is built using React, Express.js, Node.js, and MongoDB.",
     technologies: ["React", "Express.js", "Node.js", "MongoDB"],
-    liveUrl: "https://electrica-theta.vercel.app",
+    liveUrl: "https://electricaapp.vercel.app",
     githubUrl: "https://github.com/ABDLSamaD/Electrica",
     createdDate: "2024-7-27",
     features: [
